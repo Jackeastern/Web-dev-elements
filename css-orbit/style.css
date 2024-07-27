@@ -1,0 +1,68 @@
+:root {
+    --primary-color: #000000;
+    /* Replace with your primary color */
+    --secondary-color: #6c757d;
+    /* Replace with your secondary color */
+    --font-family-sans: sans-serif;
+    --font-family-serif: serif;
+    --font-size-base: 16px;
+    --line-height-base: 1.5;
+    --text: white;
+
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-base);
+    font-family: var(--font-family-sans);
+
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.flex-center {
+    position: relative;
+    top: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+ .circle {
+    display: grid;
+    grid-template-areas: "layer";
+    place-items: center;
+    border-radius: 50%;
+
+    --radius: 25vmin;
+    width: calc(2 * var(--radius));
+    height: calc(2 * var(--radius));
+  }
+
+  .box {
+    grid-area: layer;
+    width: 30vmin;
+    height: 2em;
+    border-radius: 10px;
+
+    display: grid;
+    place-items: center;
+
+    background: #000000;
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 3vmin;
+
+    --d: calc(var(--i) / var(--total));
+    --r-offset: -0.25turn;
+    --r-amount: 1turn;
+    --r: calc((var(--r-amount) * var(--d)) + var(--r-offset));
+    --transform: rotate(var(--r)) translate(var(--radius))
+      rotate(calc(-1 * var(--r)));
+
+    transform: var(--transform);
+    transition: transform 3s ease-in-out;
+
+    .circle:hover & {
+      --radius: calc(-20vmin);
+      --r-offset: 1.75turn; 
+    }
+  }
